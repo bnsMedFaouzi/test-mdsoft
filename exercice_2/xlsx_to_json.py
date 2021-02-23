@@ -91,10 +91,6 @@ def save_data(file_path, data):
 
 
 if __name__ == '__main__':
-    import os
-
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    print(dir_path)
     items = xlsx_to_list(IN_FILE_PATH)
     data = dict(items=items)
     save_data(OUT_FILE_PATH, data)
