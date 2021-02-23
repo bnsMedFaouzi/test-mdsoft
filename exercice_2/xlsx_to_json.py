@@ -1,7 +1,9 @@
 import xlrd
+import os
 
-IN_FILE_PATH = './statics/test.xlsx'
-OUT_FILE_PATH = './statics/test.json'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+IN_FILE_PATH = os.path.join(dir_path, './statics/test.xlsx')
+OUT_FILE_PATH = os.path.join(dir_path, './statics/test.json')
 START_POSITION = 4
 END_POSITION = 33
 REFERENCE_INDEX = 0
@@ -47,7 +49,7 @@ def extract_cell(rows, row_idx):
     )
 
 
-def xlsx_to_dict(path):
+def xlsx_to_list(path):
     """
     convert xlsx data to list data.
     :param path: object in the given row and column
@@ -89,5 +91,10 @@ def save_data(file_path, data):
 
 
 if __name__ == '__main__':
-    items = xlsx_to_dict(IN_FILE_PATH)
-    save_data(OUT_FILE_PATH, items)
+    import os
+
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    print(dir_path)
+    items = xlsx_to_list(IN_FILE_PATH)
+    data = dict(items=items)
+    save_data(OUT_FILE_PATH, data)
